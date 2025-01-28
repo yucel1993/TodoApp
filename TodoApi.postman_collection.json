@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "76c3877a-5eae-4f7a-8578-4753bcaade7a",
+		"name": "TodoApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28016373"
+	},
+	"item": [
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "getAllCategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:9090/category/all"
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:9090/category/category/1/id"
+					},
+					"response": []
+				},
+				{
+					"name": "getById Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:9090/category/category/sport/name"
+					},
+					"response": []
+				},
+				{
+					"name": "createCategory",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryName\":\"Sport\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:9090/category/add"
+					},
+					"response": []
+				},
+				{
+					"name": "updateCategory",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryName\":\"Music\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:9090/category/update/1"
+					},
+					"response": []
+				},
+				{
+					"name": "updateCategory Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryName\":\"Music\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:9090/category/delete/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Todo",
+			"item": [
+				{
+					"name": "getAllTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:9090/todo/all"
+					},
+					"response": []
+				},
+				{
+					"name": "getByIdTodo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:9090/todo/todo/2/todo"
+					},
+					"response": []
+				},
+				{
+					"name": "getByCategoryAllTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:9090/todo/todo/Music/all/todos"
+					},
+					"response": []
+				},
+				{
+					"name": "searchtodo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:9090/todo/todos/{write any todo here}/todos"
+					},
+					"response": []
+				},
+				{
+					"name": "createTodo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"listen a music\",\r\n    \"category\": {\r\n        \"categoryName\": \"Music\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:9090/todo/add"
+					},
+					"response": []
+				},
+				{
+					"name": "updateTodo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Sing a Song\",\r\n    \"category\": {\r\n        \"categoryName\": \"Music\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:9090/todo/todo/2/update"
+					},
+					"response": []
+				},
+				{
+					"name": "updateCategory Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryName\":\"Music\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:9090/todo/todo/1/delete"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
