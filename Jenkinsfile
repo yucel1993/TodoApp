@@ -9,7 +9,7 @@ pipeline {
                 }
             }
         }
-        stage('Hello World') {
+        stage('Hello World 2') {
                     steps {
                         script {
                             echo 'Hello, World! 2'
