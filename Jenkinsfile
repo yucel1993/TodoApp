@@ -9,5 +9,12 @@ pipeline {
                 }
             }
         }
+        stage('Hello World') {
+                    steps {
+                        script {
+                            echo 'Hello, World! 2'
+                        }
+                    }
+                }
     }
 }
