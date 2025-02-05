@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  mysql-db:
+    image: mysql:8
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345  # Set the root password
+      MYSQL_DATABASE: tododb      # Create the database
+    ports:
+      - "3307:3306"               # Map port 3306 (container) to 3307 (host)
+    networks:
+      - todo-network
+    volumes:
+      - ./data.sql:/docker-entrypoint-initdb.d/data.sql
+
+  app:
+    build: .
+    container_name: todo-app
+    restart: always
+    depends_on:
+      - mysql-db
+    ports:
+      - "7070:7070"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/tododb
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 12345
+    networks:
+      - todo-network
+
+networks:
+  todo-network:
+    driver: bridge
