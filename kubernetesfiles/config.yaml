@@ -1,9 +1,9 @@
-# templates/mysql-configmap.yaml
+# ConfigMap for initializing MySQL database
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: mysql-init-script
 data:
-  init.sql: |
+  data.sql: |
     CREATE DATABASE IF NOT EXISTS tododb;
     USE tododb;

@@ -1,0 +1,14 @@
+todoApp:
+  image: burhanycl/todospring:latest
+  replicas: 1
+  containerPort: 7070
+  service:
+    type: ClusterIP
+    port: 7070
+
+mysql:
+  image: mysql:8
+  rootPassword: "12345"
+  database: "tododb"
+  service:
+    port: 3306
