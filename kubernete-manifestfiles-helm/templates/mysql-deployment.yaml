@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}-mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}-mysql
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}-mysql
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}-mysql
+          image: "{{ .Values.mysql.image.repository }}:{{ .Values.mysql.image.tag }}"
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "{{ .Values.mysql.env.rootPassword }}"
+            - name: MYSQL_DATABASE
+              value: "{{ .Values.mysql.env.database }}"
+            - name: MYSQL_USER
+              value: "{{ .Values.mysql.env.username }}"
+            - name: MYSQL_PASSWORD
+              value: "{{ .Values.mysql.env.password }}"
+          ports:
+            - containerPort: {{ .Values.mysql.service.targetPort }}
+          volumeMounts:
+            - name: mysql-init-script
+              mountPath: /docker-entrypoint-initdb.d/
+      volumes:
+        - name: mysql-init-script
+          configMap:
+            name: {{ .Values.mysql.configMap.name }}

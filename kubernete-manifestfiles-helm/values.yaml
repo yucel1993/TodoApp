@@ -1,0 +1,36 @@
+# Helm Chart values
+
+# Application configuration
+app:
+  image:
+    repository: burhanycl/todospring
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: NodePort
+    port: 7070
+    targetPort: 7070
+    nodePort: 30007
+  env:
+    spring:
+      datasource:
+        url: "jdbc:mysql://myapp-mysql:3306/tododb?serverTimezone=UTC&connectTimeout=60000&socketTimeout=60000"
+        username: "appuser"
+        password: "apppass"
+
+# MySQL configuration
+mysql:
+  image:
+    repository: mysql
+    tag: 8
+    pullPolicy: IfNotPresent
+  service:
+    port: 3306
+    targetPort: 3306
+  env:
+    rootPassword: "12345"
+    database: "tododb"
+    username: "appuser"
+    password: "apppass"
+  configMap:
+    name: mysql-init-script
